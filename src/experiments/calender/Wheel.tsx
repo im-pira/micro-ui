@@ -45,7 +45,6 @@ export default function Wheel({ items, value, setValue }: Props) {
                                 {item}
                             </button>
                         ))}
-
                         <div className="h-[42px]" />
                     </div>
                 </div>
