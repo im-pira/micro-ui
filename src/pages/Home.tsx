@@ -30,6 +30,10 @@ export default function Home() {
       <Link to="/experiments/love-toggle">
         love toggle
       </Link>
+      <br />
+      <Link to="/experiments/music-player">
+        music player
+      </Link>
     </main>
   );
 }

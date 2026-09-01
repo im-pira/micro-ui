@@ -7,6 +7,7 @@ import VoiceChatExpand from "./experiments/voice-chat-expand/VoiceChatExpand";
 import SearchBox from "./experiments/search-box/SearchBox";
 import Calender from "./experiments/calender/Calender";
 import LoveToggle from "./experiments/love-toggle/LoveToggle";
+import MusicPlayer from "./experiments/music-player/MusicPlayer";
 
 function App() {
   return (
@@ -40,6 +41,10 @@ function App() {
         <Route
           path="/experiments/love-toggle"
           element={<LoveToggle />}
+        />
+        <Route
+          path="/experiments/music-player"
+          element={<MusicPlayer />}
         />
       </Routes>
     </BrowserRouter>
