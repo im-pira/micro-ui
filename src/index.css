@@ -139,3 +139,8 @@ body {
 .love-toggle:focus-visible {
   outline: none;
 }
+@keyframes playerDialSpin {
+    to {
+        transform: rotate(360deg);
+    }
+}
