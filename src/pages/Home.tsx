@@ -34,6 +34,10 @@ export default function Home() {
       <Link to="/experiments/music-player">
         music player
       </Link>
+      <br />
+      <Link to="/experiments/knob">
+        knob rotator
+      </Link>
     </main>
   );
 }

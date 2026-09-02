@@ -8,6 +8,7 @@ import SearchBox from "./experiments/search-box/SearchBox";
 import Calender from "./experiments/calender/Calender";
 import LoveToggle from "./experiments/love-toggle/LoveToggle";
 import MusicPlayer from "./experiments/music-player/MusicPlayer";
+import Knob from "./experiments/knob/Knob";
 
 function App() {
   return (
@@ -45,6 +46,10 @@ function App() {
         <Route
           path="/experiments/music-player"
           element={<MusicPlayer />}
+        />
+        <Route
+          path="/experiments/knob"
+          element={<Knob />}
         />
       </Routes>
     </BrowserRouter>
