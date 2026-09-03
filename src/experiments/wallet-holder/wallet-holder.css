@@ -1,0 +1,69 @@
+.card-gold {
+  --base-z: 10;
+  --out-scale: 1.1;
+}
+
+.card-red {
+  --base-z: 20;
+  --out-scale: 1.16;
+}
+
+@keyframes cardOut {
+  0% {
+    transform: translate3d(-50%, 0, 0) scale(1);
+    z-index: var(--base-z);
+  }
+
+  52% {
+    transform: translate3d(-50%, -128px, 0) scale(1.03);
+    z-index: var(--base-z);
+  }
+
+  53% {
+    z-index: 50;
+  }
+
+  100% {
+    transform: translate3d(-50%, 8px, 0) scale(var(--out-scale));
+    z-index: 50;
+  }
+}
+
+@keyframes cardIn {
+  0% {
+    transform: translate3d(-50%, 8px, 0) scale(var(--out-scale));
+    z-index: 50;
+  }
+
+  47% {
+    transform: translate3d(-50%, -128px, 0) scale(1.03);
+    z-index: 50;
+  }
+
+  48% {
+    z-index: var(--base-z);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0) scale(1);
+    z-index: var(--base-z);
+  }
+}
+
+.card-out,
+.card-in {
+  animation-duration: 680ms;
+  animation-timing-function: cubic-bezier(.4, 0, .2, 1);
+  animation-fill-mode: forwards;
+  transform-origin: center;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+.card-out {
+  animation-name: cardOut;
+}
+
+.card-in {
+  animation-name: cardIn;
+}
