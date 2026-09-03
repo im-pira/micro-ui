@@ -150,7 +150,7 @@ export default function MusicPlayer() {
                 ];
                 let foundLyrics: string | null = null;
                 for (const search of searches) {
-                    const params = new URLSearchParams(search);
+                    const params = new URLSearchParams(Object.entries(search).filter((entry): entry is [string, string] => entry[1] !== undefined));
                     const response = await fetch(`https://lrclib.net/api/search?${params.toString()}`, { signal: controller.signal });
                     if (!response.ok) continue;
                     const data = (await response.json()) as LyricsResult[];
