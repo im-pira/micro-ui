@@ -38,6 +38,10 @@ export default function Home() {
       <Link to="/experiments/knob">
         knob rotator
       </Link>
+      <br />
+      <Link to="/experiments/wallet-holder">
+        wallet holder
+      </Link>
     </main>
   );
 }
