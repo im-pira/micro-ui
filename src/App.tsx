@@ -10,6 +10,7 @@ import LoveToggle from "./experiments/love-toggle/LoveToggle";
 import MusicPlayer from "./experiments/music-player/MusicPlayer";
 import Knob from "./experiments/knob/Knob";
 import WalletHolder from "./experiments/wallet-holder/WalletHolder";
+import GlassFolder from "./experiments/glass-folder/GlassFolder";
 
 function App() {
   return (
@@ -55,6 +56,10 @@ function App() {
         <Route
           path="/experiments/wallet-holder"
           element={<WalletHolder />}
+        />
+        <Route
+          path="/experiments/glass-folder"
+          element={<GlassFolder />}
         />
       </Routes>
     </BrowserRouter>
