@@ -10,7 +10,8 @@ import LoveToggle from "./experiments/love-toggle/LoveToggle";
 import MusicPlayer from "./experiments/music-player/MusicPlayer";
 import Knob from "./experiments/knob/Knob";
 import WalletHolder from "./experiments/wallet-holder/WalletHolder";
-import GlassFolder from "./experiments/glass-folder/GlassFolder";
+import GlassFolder from "./experiments/metalic-folder/MetallicFolder";
+import MetallicFolder from "./experiments/metalic-folder/MetallicFolder";
 
 function App() {
   return (
@@ -58,8 +59,8 @@ function App() {
           element={<WalletHolder />}
         />
         <Route
-          path="/experiments/glass-folder"
-          element={<GlassFolder />}
+          path="/experiments/metallic-folder"
+          element={<MetallicFolder />}
         />
       </Routes>
     </BrowserRouter>

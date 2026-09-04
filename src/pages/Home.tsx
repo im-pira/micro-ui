@@ -11,7 +11,7 @@ const experiments = [
   ["08", "music player", "/experiments/music-player"],
   ["09", "knob rotator", "/experiments/knob"],
   ["10", "wallet holder", "/experiments/wallet-holder"],
-  ["11", "glass folder", "/experiments/glass-folder"],
+  ["11", "metallic folder", "/experiments/metallic-folder"],
 ];
 
 export default function Home() {
