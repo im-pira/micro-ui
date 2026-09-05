@@ -11,6 +11,7 @@ import MusicPlayer from "./experiments/music-player/MusicPlayer";
 import Knob from "./experiments/knob/Knob";
 import WalletHolder from "./experiments/wallet-holder/WalletHolder";
 import Folder from "./experiments/folder/Folder";
+import ProfileCard from "./experiments/profile-card/ProfileCard";
 
 function App() {
   return (
@@ -60,6 +61,10 @@ function App() {
         <Route
           path="/experiments/folder"
           element={<Folder />}
+        />
+        <Route
+          path="/experiments/profile-card"
+          element={<ProfileCard />}
         />
       </Routes>
     </BrowserRouter>
