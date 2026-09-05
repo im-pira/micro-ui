@@ -21,8 +21,8 @@ export default function Folder() {
                         key={i}
                         onClick={() => setActive(active === i ? null : i)}
                         className={`absolute ${c} overflow-hidden rounded-[6px] border border-white/50 bg-gradient-to-br from-[#fff] via-[#f4f4f4] to-[#d9d9db] shadow-[0_3px_8px_#0003] will-change-transform transition-[transform,box-shadow] duration-500 ease-[cubic-bezier(.22,1,.36,1)] ${active === i
-                                ? "[transform:translateY(-8px)_translateZ(18px)_scale(1.018)] shadow-[0_10px_18px_#0004]"
-                                : "hover:[transform:translateY(-2px)_translateZ(4px)]"
+                            ? "[transform:translateY(-8px)_translateZ(18px)_scale(1.018)] shadow-[0_10px_18px_#0004]"
+                            : "hover:[transform:translateY(-2px)_translateZ(4px)]"
                             }`}
                     >
                         <span className="absolute inset-x-0 top-0 h-1/2 bg-gradient-to-b from-white/60 to-transparent" />
@@ -38,7 +38,7 @@ export default function Folder() {
                 {/* Frosted front */}
                 <svg
                     viewBox="0 0 210 126"
-                    className="absolute left-[39px] top-[72px] h-[126px] w-[210px] origin-bottom [transform:rotateX(-15deg)] drop-shadow-[0_10px_12px_#0006]"
+                    className="pointer-events-none absolute left-[39px] top-[72px] h-[126px] w-[210px] origin-bottom [transform:rotateX(-15deg)] drop-shadow-[0_8px_9px_#0004]"
                 >
                     <defs>
                         <linearGradient id="front" x1="0" y1="0" x2=".12" y2="1">
