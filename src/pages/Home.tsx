@@ -13,6 +13,7 @@ const experiments = [
   ["10", "wallet holder", "/experiments/wallet-holder"],
   ["11", "folder", "/experiments/folder"],
   ["12", "profile-card", "/experiments/profile-card"],
+  ["13", "shapes", "/experiments/shapes"],
 ];
 
 export default function Home() {

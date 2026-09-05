@@ -12,6 +12,7 @@ import Knob from "./experiments/knob/Knob";
 import WalletHolder from "./experiments/wallet-holder/WalletHolder";
 import Folder from "./experiments/folder/Folder";
 import ProfileCard from "./experiments/profile-card/ProfileCard";
+import Shapes from "./experiments/shapes/Shapes";
 
 function App() {
   return (
@@ -65,6 +66,10 @@ function App() {
         <Route
           path="/experiments/profile-card"
           element={<ProfileCard />}
+        />
+        <Route
+          path="/experiments/shapes"
+          element={<Shapes />}
         />
       </Routes>
     </BrowserRouter>
