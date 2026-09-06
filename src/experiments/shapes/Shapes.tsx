@@ -13,7 +13,9 @@ export default function Shapes() {
         {/* Drop shadow */}
         <div className="h-40 w-40 rounded-2xl bg-[#f5f5f5] shadow-[7px_9px_12px_rgba(0,0,0,0.22)]" />
 
-        <div className="h-40 w-40 rounded-2xl bg-white" />
+        {/* Beveled / embossed neumorphism */}
+        <div className="h-40 w-40 rounded-2xl bg-[#f1f1f1] shadow-[inset_5px_5px_8px_#fff,inset_-5px_-5px_8px_#cfcfcf,7px_9px_12px_rgba(0,0,0,.18)] border border-white/70" />
+
         <div className="h-40 w-40 rounded-2xl bg-white" />
         <div className="h-40 w-40 rounded-2xl bg-white" />
         <div className="h-40 w-40 rounded-2xl bg-white" />
