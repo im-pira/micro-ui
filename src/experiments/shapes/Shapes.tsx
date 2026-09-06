@@ -10,7 +10,9 @@ export default function Shapes() {
         {/* Extruded neumorphism */}
         <div className="h-40 w-40 rounded-[28px] bg-gradient-to-tr from-white via-[#eeeeee] to-[#c9c9c9] shadow-[-10px_14px_12px_rgba(0,0,0,.28),_8px_12px_10px_rgba(0,0,0,.18),_inset_2px_2px_3px_white]" />
 
-        <div className="h-40 w-40 rounded-2xl bg-white" />
+        {/* Drop shadow */}
+        <div className="h-40 w-40 rounded-2xl bg-[#f5f5f5] shadow-[7px_9px_12px_rgba(0,0,0,0.22)]" />
+
         <div className="h-40 w-40 rounded-2xl bg-white" />
         <div className="h-40 w-40 rounded-2xl bg-white" />
         <div className="h-40 w-40 rounded-2xl bg-white" />
