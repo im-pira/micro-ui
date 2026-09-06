@@ -13,6 +13,7 @@ import WalletHolder from "./experiments/wallet-holder/WalletHolder";
 import Folder from "./experiments/folder/Folder";
 import ProfileCard from "./experiments/profile-card/ProfileCard";
 import Shapes from "./experiments/shapes/Shapes";
+import GradientFramework from "./experiments/gradient-framework/GradientFramework";
 
 function App() {
   return (
@@ -70,6 +71,10 @@ function App() {
         <Route
           path="/experiments/shapes"
           element={<Shapes />}
+        />
+        <Route
+          path="/experiments/gradient-framework"
+          element={<GradientFramework />}
         />
       </Routes>
     </BrowserRouter>

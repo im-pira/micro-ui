@@ -12,8 +12,9 @@ const experiments = [
   ["09", "knob rotator", "/experiments/knob"],
   ["10", "wallet holder", "/experiments/wallet-holder"],
   ["11", "folder", "/experiments/folder"],
-  ["12", "profile-card", "/experiments/profile-card"],
+  ["12", "profilecard", "/experiments/profile-card"],
   ["13", "shapes", "/experiments/shapes"],
+  ["14", "gradient framework", "/experiments/gradient-framework"],
 ];
 
 export default function Home() {
