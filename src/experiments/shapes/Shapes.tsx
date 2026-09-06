@@ -20,12 +20,15 @@ export default function Shapes() {
         {/* Texture overlay / paper grain card */}
         <div className="h-40 w-40 rounded-2xl bg-[#f5f4f1] bg-[url('/shapes/paper-texture.png')] bg-cover shadow-[6px_8px_14px_rgba(0,0,0,.14)]" />
 
-        <div className="h-40 w-40 rounded-2xl bg-white" />
+        {/* satin effect */}
+        <div className="h-40 w-40 rounded-2xl bg-[linear-gradient(155deg,#f7f7f7_0%,#ededed_30%,#ffffff_42%,#dcdcdc_52%,#fafafa_63%,#e9e9e9_100%)] shadow-[6px_8px_14px_rgba(0,0,0,.14)]" />
+
         <div className="h-40 w-40 rounded-2xl bg-white" />
         <div className="h-40 w-40 rounded-2xl bg-white" />
         <div className="h-40 w-40 rounded-2xl bg-white" />
 
-        <div className="h-40 w-40 rounded-2xl bg-white" />
+        {/* Brushed metallic / aluminum */}
+        <div className="h-40 w-40 rounded-2xl bg-[linear-gradient(145deg,#f8f9fa_0%,#d7dadd_18%,#ffffff_34%,#c3c7cb_50%,#f4f5f6_67%,#b7bcc1_82%,#eef0f2_100%)] shadow-[0_14px_28px_rgba(0,0,0,.16),inset_1px_1px_2px_rgba(255,255,255,.95),inset_-1px_-1px_2px_rgba(70,80,90,.18)]" />
         <div className="h-40 w-40 rounded-2xl bg-white" />
         <div className="h-40 w-40 rounded-2xl bg-white" />
         <div className="h-40 w-40 rounded-2xl bg-white" />
