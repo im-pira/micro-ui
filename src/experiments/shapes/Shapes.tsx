@@ -18,9 +18,8 @@ export default function Shapes() {
 
 
         {/* Texture overlay / paper grain card */}
-        <div className="h-40 w-40 rounded-2xl bg-[#f5f5f2] shadow-[6px_8px_14px_rgba(0,0,0,.14)] bg-[repeating-radial-gradient(circle_at_0_0,rgba(0,0,0,.035)_0_1px,transparent_1px_3px)]" />
-        
-        <div className="h-40 w-40 rounded-2xl bg-white" />
+        <div className="h-40 w-40 rounded-2xl bg-[#f5f4f1] bg-[url('/shapes/paper-texture.png')] bg-cover shadow-[6px_8px_14px_rgba(0,0,0,.14)]" />
+
         <div className="h-40 w-40 rounded-2xl bg-white" />
         <div className="h-40 w-40 rounded-2xl bg-white" />
         <div className="h-40 w-40 rounded-2xl bg-white" />
