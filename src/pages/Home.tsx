@@ -15,6 +15,7 @@ const experiments = [
   ["12", "profilecard", "/experiments/profile-card"],
   ["13", "shapes", "/experiments/shapes"],
   ["14", "gradient framework", "/experiments/gradient-framework"],
+  ["15", "ASCII lab", "/experiments/ascii-lab"],
 ];
 
 export default function Home() {

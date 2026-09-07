@@ -14,6 +14,7 @@ import Folder from "./experiments/folder/Folder";
 import ProfileCard from "./experiments/profile-card/ProfileCard";
 import Shapes from "./experiments/shapes/Shapes";
 import GradientFramework from "./experiments/gradient-framework/GradientFramework";
+import ASCIILab from "./experiments/ascii-lab/AsciiLab";
 
 function App() {
   return (
@@ -75,6 +76,10 @@ function App() {
         <Route
           path="/experiments/gradient-framework"
           element={<GradientFramework />}
+        />
+        <Route
+          path="/experiments/ascii-lab"
+          element={<ASCIILab />}
         />
       </Routes>
     </BrowserRouter>
