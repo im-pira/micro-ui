@@ -14,7 +14,7 @@ import Folder from "./experiments/folder/Folder";
 import ProfileCard from "./experiments/profile-card/ProfileCard";
 import Shapes from "./experiments/shapes/Shapes";
 import GradientFramework from "./experiments/gradient-framework/GradientFramework";
-import ASCIILab from "./experiments/ascii-lab/AsciiLab";
+import ASCIILab from "./experiments/ascii-lab/ASCIILab";
 
 function App() {
   return (
