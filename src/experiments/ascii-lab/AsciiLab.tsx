@@ -1,12 +1,17 @@
 import FishASCII from "./FishASCII";
-// import AbstractASCII from "./AbstractASCII";
+import AbstractASCII from "./AbstractASCII";
 
 const cards = [
     {
         title: "Turn Analysis Into Authority.",
         text: "Don’t just track the market—narrate it. Generate watermarked, high-fidelity chart snapshots and broadcast your thesis.",
         visual: <FishASCII />,
-    }
+    },
+    {
+        title: "Share The Narrative",
+        text: "Don’t just share a screenshot. Publish interactive market snapshots that allow your team to inspect the data.",
+        visual: <AbstractASCII />,
+    },
 ];
 
 export default function ASCIILab() {
