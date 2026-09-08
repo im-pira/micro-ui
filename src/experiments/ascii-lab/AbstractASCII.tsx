@@ -6,8 +6,8 @@ export default function AbstractASCII() {
             src="/ascii/smoke.mov"
             chars=".+/7135"
             color="#6f6cff"
-            cellSize={6}
-            threshold={35}
+            cellSize={4}
+            threshold={25}
         />
     );
 }

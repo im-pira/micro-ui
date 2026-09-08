@@ -1,3 +1,4 @@
+import { useState } from "react";
 import FishASCII from "./FishASCII";
 import AbstractASCII from "./AbstractASCII";
 
@@ -14,6 +15,35 @@ const cards = [
     },
 ];
 
+
+function RangeSwitch() {
+    const options = ["1D", "7D", "1M"];
+    const [active, setActive] = useState("1M");
+
+    const index = options.indexOf(active);
+
+    return (
+        <div className="relative flex rounded-full border border-neutral-200 bg-neutral-50 p-1">
+            <div
+                className="absolute inset-y-1 left-1 w-[calc(33.333%-0.25rem)] rounded-full bg-white shadow-sm transition-transform duration-300 ease-out"
+                style={{
+                    transform: `translateX(${index * 100}%)`,
+                }}
+            />
+
+            {options.map((item) => (
+                <button
+                    key={item}
+                    onClick={() => setActive(item)}
+                    className="relative z-10 px-3 py-1.5 text-[10px] text-neutral-600 transition-colors"
+                >
+                    {item}
+                </button>
+            ))}
+        </div>
+    );
+}
+
 export default function ASCIILab() {
     return (
         <div className="flex min-h-screen items-center justify-center bg-neutral-100 p-6">
@@ -28,27 +58,18 @@ export default function ASCIILab() {
                         </div>
 
                         <div>
-                            <h2 className="font-serif text-lg">
+                            <h2 className="text-lg italic font-normal [font-family:'Open_Sans']">
                                 {card.title}
                             </h2>
 
-                            <p className="mt-2 max-w-xs text-[10px] leading-tight text-neutral-500">
+                            <p className="mt-1 max-w-sm text-[11px] leading-relaxed text-neutral-500">
                                 {card.text}
                             </p>
 
-                            <div className="mt-10 flex items-center justify-between">
-                                <div className="flex gap-1">
-                                    {["1D", "7D", "1M"].map((item) => (
-                                        <button
-                                            key={item}
-                                            className="rounded border border-neutral-200 px-2 py-1 text-[9px]"
-                                        >
-                                            {item}
-                                        </button>
-                                    ))}
-                                </div>
+                            <div className="mt-8 flex items-center justify-between border-t border-neutral-200 pt-4">
+                                <RangeSwitch />
 
-                                <button className="rounded bg-black px-3 py-2 text-[9px] text-white">
+                                <button className="rounded-full border border-neutral-700 bg-gradient-to-b from-neutral-700 via-neutral-900 to-black px-4 py-2 text-[10px] font-medium text-white shadow-[inset_0_1px_0_rgba(255,255,255,0.12),0_3px_8px_rgba(0,0,0,0.25)] transition hover:brightness-110">
                                     Share ↗
                                 </button>
                             </div>
@@ -58,4 +79,4 @@ export default function ASCIILab() {
             </div>
         </div>
     );
-}
+} 
