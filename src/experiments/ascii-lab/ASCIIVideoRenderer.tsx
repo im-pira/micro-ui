@@ -137,14 +137,12 @@ export default function ASCIIVideoRenderer({
             video.currentTime = 0;
             video.play().catch(() => { });
 
-            // visible for 5s
             fadeTimeout = window.setTimeout(() => {
                 overlay.style.transition =
                     "opacity 2.5s ease-in-out";
                 overlay.style.opacity = "1";
             }, 3500);
 
-            // after fade completes
             restartTimeout = window.setTimeout(() => {
                 video.pause();
 
