@@ -46,11 +46,11 @@ export default function AnimatedGradient() {
     const mat = new THREE.ShaderMaterial({
       uniforms: {
         uTime: { value: 0 },
-        c1: { value: new THREE.Color("#ffb3a7") }, // soft coral
-        c2: { value: new THREE.Color("#f4d6c8") }, // peach cream
-        c3: { value: new THREE.Color("#c9c2ff") }, // lavender
-        c4: { value: new THREE.Color("#9fd7e8") }, // soft cyan
-        c5: { value: new THREE.Color("#d9e4cf") }, // pale sage
+        c1: { value: new THREE.Color("#ffb3a7") },
+        c2: { value: new THREE.Color("#f4d6c8") },
+        c3: { value: new THREE.Color("#c9c2ff") },
+        c4: { value: new THREE.Color("#9fd7e8") },
+        c5: { value: new THREE.Color("#d9e4cf") },
       },
       vertexShader,
       fragmentShader: `
