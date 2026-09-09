@@ -15,6 +15,7 @@ import ProfileCard from "./experiments/profile-card/ProfileCard";
 import Shapes from "./experiments/shapes/Shapes";
 import GradientFramework from "./experiments/gradient-framework/GradientFramework";
 import ASCIILab from "./experiments/ascii-lab/ASCIILab";
+import CameraControlPanel from "./experiments/camera-control-panel/CameraControlPanel";
 
 function App() {
   return (
@@ -80,6 +81,10 @@ function App() {
         <Route
           path="/experiments/ascii-lab"
           element={<ASCIILab />}
+        />
+        <Route
+          path="/experiments/camera-control-panel"
+          element={<CameraControlPanel />}
         />
       </Routes>
     </BrowserRouter>

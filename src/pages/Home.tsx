@@ -16,6 +16,7 @@ const experiments = [
   ["13", "shapes", "/experiments/shapes"],
   ["14", "gradient framework", "/experiments/gradient-framework"],
   ["15", "ASCII lab", "/experiments/ascii-lab"],
+  ["16", "Camera control panel", "/experiments/camera-control-panel"],
 ];
 
 export default function Home() {
