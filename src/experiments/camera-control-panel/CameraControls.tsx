@@ -48,36 +48,36 @@ export function useCameraControls() {
     };
 }
 export function ExposureMeter() {
-  const bars = [
-    8, 16, 22, 14, 10, 18, 28, 12, 20, 9, 14, 26, 18, 7, 24, 16, 11, 21,
-    13, 30, 17, 9, 20, 25, 12, 18, 8, 14, 23, 19, 10, 27, 15, 11, 22, 16,
-  ];
+    const bars = [
+        8, 16, 22, 14, 10, 18, 28, 12, 20, 9, 14, 26, 18, 7, 24, 16, 11, 21,
+        13, 30, 17, 9, 20, 25, 12, 18, 8, 14, 23, 19, 10, 27, 15, 11, 22, 16,
+    ];
 
-  return (
-    <div className="relative h-[34px] w-[112px] overflow-hidden rounded-[10px] border border-white/10 bg-[#141414]">
-      <div className="absolute left-1/2 top-[4px] z-20 h-[26px] w-px -translate-x-1/2 bg-[#e74848]" />
+    return (
+        <div className="relative h-[34px] w-[112px] overflow-hidden rounded-[10px] border border-white/10 bg-[#141414]">
+            <div className="absolute left-1/2 top-[4px] z-20 h-[26px] w-px -translate-x-1/2 bg-[#e74848]" />
 
-      <div className="absolute inset-y-[4px] left-0 flex animate-[meterScroll_8s_linear_infinite] items-center">
-        {[0, 1].map((copy) => (
-          <div
-            key={copy}
-            className="flex shrink-0 items-center gap-[4px] pr-[4px]"
-          >
-            {bars.map((height, index) => (
-              <span
-                key={`${copy}-${index}`}
-                className="w-[2px] shrink-0 rounded-full bg-white/55"
-                style={{ height }}
-              />
-            ))}
-          </div>
-        ))}
-      </div>
+            <div className="absolute inset-y-[4px] left-0 flex animate-[meterScroll_8s_linear_infinite] items-center">
+                {[0, 1].map((copy) => (
+                    <div
+                        key={copy}
+                        className="flex shrink-0 items-center gap-[4px] pr-[4px]"
+                    >
+                        {bars.map((height, index) => (
+                            <span
+                                key={`${copy}-${index}`}
+                                className="w-[2px] shrink-0 rounded-full bg-white/55"
+                                style={{ height }}
+                            />
+                        ))}
+                    </div>
+                ))}
+            </div>
 
-      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[14px] bg-gradient-to-r from-[#141414] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[14px] bg-gradient-to-l from-[#141414] to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-[14px] bg-gradient-to-r from-[#141414] to-transparent" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-[14px] bg-gradient-to-l from-[#141414] to-transparent" />
 
-      <style>{`
+            <style>{`
         @keyframes meterScroll {
           from {
             transform: translateX(0);
@@ -87,8 +87,8 @@ export function ExposureMeter() {
           }
         }
       `}</style>
-    </div>
-  );
+        </div>
+    );
 }
 
 export function ModeControl({
@@ -98,35 +98,66 @@ export function ModeControl({
     mode: "M" | "S" | "A";
     onChange: () => void;
 }) {
+    const [shifting, setShifting] = useState(false);
+
+    const modes: Array<"M" | "S" | "A"> = ["M", "S", "A"];
+    const index = modes.indexOf(mode);
+
+    const prev = modes[(index - 1 + modes.length) % modes.length];
+    const next = modes[(index + 1) % modes.length];
+    const afterNext = modes[(index + 2) % modes.length];
+
+    const items = [
+        { value: prev, from: -38, to: -76, role: "prev" },
+        { value: mode, from: 0, to: -38, role: "current" },
+        { value: next, from: 38, to: 0, role: "next" },
+        { value: afterNext, from: 76, to: 38, role: "after" },
+    ];
+
+    const shift = () => {
+        if (!shifting) setShifting(true);
+    };
+
     return (
         <button
-            onClick={onChange}
-            className="relative h-[97px] w-[49px] -rotate-[12deg] overflow-hidden rounded-full bg-[#101010]"
+            onClick={shift}
+            className="relative h-[108px] w-[50px] overflow-hidden rounded-[25px] bg-[#101010] shadow-[inset_0_1px_2px_rgba(255,255,255,0.04),0_5px_12px_rgba(0,0,0,0.2)]"
         >
-            <span
-                className={`absolute left-1/2 top-[7px] -translate-x-1/2 text-[8px] ${mode === "M" ? "text-white" : "text-white/20"
-                    }`}
-            >
-                M
-            </span>
+            <div className="absolute left-1/2 top-1/2 size-[34px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#f04a32] shadow-[0_4px_14px_rgba(240,74,50,0.3)]" />
 
-            <span
-                className={`absolute left-1/2 top-[35px] flex size-[31px] -translate-x-1/2 items-center justify-center rounded-full text-[17px] font-semibold transition ${mode === "S"
-                    ? "bg-[#f04a32] text-black/75"
-                    : "bg-white/10 text-white/25"
-                    }`}
-            >
-                S
-            </span>
+            {items.map((item, i) => {
+                const focused = shifting
+                    ? item.role === "next"
+                    : item.role === "current";
 
-            <span
-                className={`absolute bottom-[3px] left-1/2 flex size-[27px] -translate-x-1/2 items-center justify-center rounded-full text-[8px] ${mode === "A"
-                    ? "bg-[#f04a32] text-black/75"
-                    : "bg-white/10 text-white/25"
-                    }`}
-            >
-                A
-            </span>
+                return (
+                    <span
+                        key={`${item.role}-${item.value}`}
+                        onTransitionEnd={() => {
+                            if (item.role !== "current" || !shifting) return;
+                            onChange();
+                            setShifting(false);
+                        }}
+                        className="pointer-events-none absolute left-1/2 top-1/2 z-10 flex size-[34px] items-center justify-center transition-[transform,opacity,color,font-size] duration-[650ms] ease-[cubic-bezier(.22,.8,.2,1)]"
+                        style={{
+                            transform: `translate(-50%, calc(-50% + ${shifting ? item.to : item.from
+                                }px)) scale(${focused ? 1 : 0.82})`,
+                            opacity: focused
+                                ? 1
+                                : item.role === "after" && !shifting
+                                    ? 0
+                                    : 0.32,
+                            color: focused
+                                ? "#161616"
+                                : "rgba(255,255,255,0.65)",
+                            fontSize: focused ? "16px" : "11px",
+                            fontWeight: focused ? 600 : 500,
+                        }}
+                    >
+                        {item.value}
+                    </span>
+                );
+            })}
         </button>
     );
 }
@@ -141,13 +172,13 @@ export function AELockButton({
     return (
         <button
             onClick={onClick}
-            className={`flex h-[50px] w-[105px] items-center justify-center rounded-[16px] transition-all duration-200 ${active
-                ? "bg-[#292929] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]"
-                : "bg-[#151515]"
+            className={`flex h-[42px] w-[88px] items-center justify-center rounded-[13px] border transition-all duration-200 ${active
+                ? "border-[#f04a32]/50 bg-[#f04a32]/15"
+                : "border-white/10 bg-white/[0.055]"
                 }`}
         >
             <span
-                className={`text-[13px] font-medium tracking-[2px] ${active ? "text-white/80" : "text-white/42"
+                className={`text-[11px] font-medium tracking-[2px] ${active ? "text-[#f04a32]" : "text-white/55"
                     }`}
             >
                 AE-L
