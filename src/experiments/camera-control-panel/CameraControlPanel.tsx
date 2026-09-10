@@ -1,25 +1,12 @@
 "use client";
 
+import { useState } from "react";
 import CameraLens from "./CameraLens";
-import {
-  AELockButton,
-  ExposureMeter,
-  ModeControl,
-  ShutterButton,
-  useCameraControls,
-} from "./CameraControls";
+import { AELockButton, ExposureMeter, ModeControl, ShutterButton, useCameraControls } from "./CameraControls";
 
 export default function CameraControlPanel() {
-  const {
-    dialValue,
-    mode,
-    aeLocked,
-    recording,
-    rotateDial,
-    cycleMode,
-    toggleAeLock,
-    toggleRecording,
-  } = useCameraControls();
+  const [previewOpen, setPreviewOpen] = useState(false);
+  const { dialValue, mode, aeLocked, recording, rotateDial, cycleMode, toggleAeLock, toggleRecording, } = useCameraControls();
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#eeeeee]">
@@ -97,13 +84,16 @@ export default function CameraControlPanel() {
             <div className="mt-[2px] text-right text-[12px]">ISO</div>
           </div>
 
-          <div className="absolute left-[34px] top-[137px] z-20 size-[70px] overflow-hidden rounded-[10px] border-[4px] border-black bg-black">
+          <button
+            onClick={() => setPreviewOpen(true)}
+            className="absolute left-[34px] top-[137px] z-20 size-[70px] overflow-hidden rounded-[10px] border-[4px] border-black bg-black"
+          >
             <img
               src="/camera-control-panel/camera.png"
               alt=""
               className="h-full w-full scale-[1.4] rounded-[5px] object-cover"
             />
-          </div>
+          </button>
 
           <div className="absolute left-[120px] top-[142px] z-20 flex h-[60px] w-[98px] items-center rounded-[16px] bg-[#111111] px-[10px]">
             <span className="text-[24px] font-medium tracking-[-1px] text-[#ff4b32]">
@@ -169,6 +159,48 @@ export default function CameraControlPanel() {
           </div>
         </div>
       </div>
+      {previewOpen && (
+  <div
+    onClick={() => setPreviewOpen(false)}
+    className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-[10px] animate-[fadeIn_220ms_ease-out]"
+  >
+    <div
+      onClick={(e) => e.stopPropagation()}
+      className="relative overflow-hidden rounded-[18px] bg-black p-[5px] shadow-[0_24px_60px_rgba(0,0,0,0.35)] animate-[previewIn_260ms_cubic-bezier(.22,1,.36,1)]"
+    >
+      <img
+        src="/camera-control-panel/camera.png"
+        alt="Camera preview"
+        className="h-[320px] w-[360px] rounded-[14px] object-cover"
+      />
+
+      <button
+        onClick={() => setPreviewOpen(false)}
+        className="absolute right-[10px] top-[10px] flex size-[26px] items-center justify-center rounded-full bg-black/50 text-[14px] text-white/80 backdrop-blur-md"
+      >
+        ×
+      </button>
+    </div>
+
+    <style>{`
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+
+      @keyframes previewIn {
+        from {
+          opacity: 0;
+          transform: scale(.88) translateY(8px);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1) translateY(0);
+        }
+      }
+    `}</style>
+  </div>
+)}
     </main>
   );
 }
