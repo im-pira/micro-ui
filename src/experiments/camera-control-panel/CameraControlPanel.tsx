@@ -1,4 +1,10 @@
+"use client";
+
+import { AELockButton, ExposureMeter, ModeControl, ShutterButton, useCameraControls, } from "./CameraControls";
+
 export default function CameraControlPanel() {
+  const { meterIndex, dialValue, mode, aeLocked, recording, rotateDial, cycleMode, toggleAeLock, toggleRecording, } = useCameraControls();
+
   const dialTicks = [
     { angle: -120, label: "0" },
     { angle: -90 },
@@ -11,9 +17,7 @@ export default function CameraControlPanel() {
     { angle: 120, label: "100" },
   ];
 
-  const meterBars = [
-    10, 16, 12, 20, 12, 15, 26, 13, 18, 12, 21, 13, 16, 11, 18,
-  ];
+  const indicatorAngle = -120 + (dialValue / 100) * 240;
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[#eeeeee]">
@@ -78,16 +82,8 @@ export default function CameraControlPanel() {
             </div>
           </div>
 
-          <div className="absolute left-[221px] top-[20px] z-20 flex h-[30px] items-center gap-[3px]">
-            {meterBars.map((height, index) => (
-              <span
-                key={index}
-                className={`w-[3px] rounded-[1px] ${
-                  index === 6 ? "bg-[#e1181d]" : "bg-white/45"
-                }`}
-                style={{ height }}
-              />
-            ))}
+          <div className="absolute left-[220px] top-[17px] z-20">
+            <ExposureMeter />
           </div>
 
           <div className="absolute right-[31px] top-[14px] z-20 w-[104px] text-white/55">
@@ -131,18 +127,21 @@ export default function CameraControlPanel() {
               SK
             </span>
 
-            <div className="ml-auto flex size-[30px] items-center justify-center rounded-[10px] bg-[#81382f] shadow-[inset_0_1px_2px_rgba(255,255,255,0.08)]">
-              <svg
-                viewBox="0 0 24 24"
-                className="size-[15px] fill-[#f4d7ce]"
-                aria-hidden="true"
-              >
-                <path d="M8.5 6.5 9.7 4.8h4.6l1.2 1.7H18A2 2 0 0 1 20 8.5v7A2 2 0 0 1 18 17.5H6A2 2 0 0 1 4 15.5v-7A2 2 0 0 1 6 6.5h2.5Zm3.5 8.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z" />
-              </svg>
+            <div className="ml-auto">
+              <ShutterButton
+                recording={recording}
+                onClick={toggleRecording}
+              />
             </div>
           </div>
 
-          <div className="absolute left-[242px] top-[103px] z-20 size-[140px]">
+          <div
+            className="absolute left-[242px] top-[103px] z-20 size-[140px] cursor-grab active:cursor-grabbing"
+            onWheel={(event) => {
+              event.preventDefault();
+              rotateDial(event.deltaY > 0 ? "left" : "right");
+            }}
+          >
             <div className="absolute -inset-[17px] rounded-full bg-[radial-gradient(circle_at_38%_28%,rgba(255,255,255,0.8),rgba(210,210,210,0.35)_40%,rgba(130,130,130,0.18)_72%,transparent_75%)] blur-[1px]" />
 
             <div className="absolute inset-0 rounded-full bg-[#e4e4e2] shadow-[0_9px_13px_rgba(0,0,0,0.45),-4px_-5px_8px_rgba(255,255,255,0.75)]" />
@@ -184,11 +183,10 @@ export default function CameraControlPanel() {
                   }}
                 >
                   <span
-                    className={`absolute left-1/2 top-0 -translate-x-1/2 bg-neutral-700 ${
-                      tick.label
-                        ? "h-[6px] w-px opacity-40"
-                        : "h-[4px] w-px opacity-20"
-                    }`}
+                    className={`absolute left-1/2 top-0 -translate-x-1/2 bg-neutral-700 ${tick.label
+                      ? "h-[6px] w-px opacity-40"
+                      : "h-[4px] w-px opacity-20"
+                      }`}
                   />
 
                   {tick.label && (
@@ -225,29 +223,22 @@ export default function CameraControlPanel() {
 
             <span className="absolute left-1/2 top-1/2 size-[1.5px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-neutral-700/30" />
 
-            <div className="absolute left-[98px] top-[84px] h-[7px] w-[3px] rotate-[120deg] rounded-full bg-[#313331] shadow-[0_1px_2px_rgba(0,0,0,0.65)]" />
+            <div
+              className="pointer-events-none absolute inset-0 transition-transform duration-200 ease-out"
+              style={{ transform: `rotate(${indicatorAngle}deg)` }}
+            >
+              <div className="absolute left-1/2 top-[13px] h-[8px] w-[3px] -translate-x-1/2 rounded-full bg-[#313331] shadow-[0_1px_2px_rgba(0,0,0,0.65)]" />
+            </div>
           </div>
 
-          <div className="absolute left-[404px] top-[118px] z-20 h-[97px] w-[49px] -rotate-[12deg] overflow-hidden rounded-full bg-[#101010] shadow-[inset_0_1px_2px_rgba(255,255,255,0.05)]">
-            <div className="absolute left-1/2 top-[7px] -translate-x-1/2 text-[8px] text-white/20">
-              M
-            </div>
-
-            <div className="absolute left-1/2 top-[35px] flex size-[31px] -translate-x-1/2 items-center justify-center rounded-full bg-[#f04a32] text-[17px] font-semibold text-black/75">
-              S
-            </div>
-
-            <div className="absolute bottom-[3px] left-1/2 flex size-[27px] -translate-x-1/2 items-center justify-center rounded-full bg-white/10 text-[8px] text-white/25">
-              A
-            </div>
+          <div className="absolute left-[404px] top-[118px] z-20">
+            <ModeControl mode={mode} onChange={cycleMode} />
           </div>
 
           <div className="absolute left-[453px] top-[165px] z-10 h-px w-[26px] bg-black/35" />
 
-          <div className="absolute right-[22px] bottom-[37px] z-20 flex h-[50px] w-[105px] items-center justify-center rounded-[16px] bg-[#151515] shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]">
-            <span className="text-[13px] font-medium tracking-[2px] text-white/42">
-              AE-L
-            </span>
+          <div className="absolute right-[22px] bottom-[37px] z-20">
+            <AELockButton active={aeLocked} onClick={toggleAeLock} />
           </div>
 
           <div className="absolute bottom-[13px] right-[22px] z-20 flex items-center gap-[5px] text-[4px] uppercase tracking-[1px] text-white/18">
