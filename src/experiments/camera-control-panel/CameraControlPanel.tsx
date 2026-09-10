@@ -25,9 +25,7 @@ export default function CameraControlPanel() {
     <main className="flex min-h-screen items-center justify-center bg-[#eeeeee]">
       <div className="relative h-[285px] w-[620px]">
         <div className="absolute -left-[30px] top-[14px] h-[255px] w-[175px] rounded-[90px] bg-black/18 blur-[52px]" />
-
         <div className="absolute bottom-[-40px] left-[20px] h-[90px] w-[575px] rounded-full bg-black/18 blur-[52px]" />
-
         <div className="absolute inset-[5px] rounded-[62px] bg-black/10 blur-[40px]" />
 
         <div className="relative h-full w-full overflow-hidden rounded-t-[16px] rounded-b-[64px] bg-[#080808] shadow-[0_30px_58px_rgba(0,0,0,0.26),-18px_18px_48px_rgba(0,0,0,0.14)]">
@@ -53,7 +51,6 @@ export default function CameraControlPanel() {
           <div className="absolute left-[38px] top-[16px] z-20">
             <div className="relative h-[45px] w-[66px]">
               <div className="absolute left-[1px] top-[17px] h-[29px] w-[64px] rounded-t-full border-[3px] border-b-0 border-[#444]" />
-
               <div
                 className="absolute left-[1px] top-[17px] h-[29px] w-[64px] rounded-t-full"
                 style={{
@@ -63,7 +60,6 @@ export default function CameraControlPanel() {
                     "radial-gradient(circle at 50% 100%, transparent 0 24px, #000 25px 28px, transparent 29px)",
                 }}
               />
-
               <div className="absolute inset-x-0 bottom-[1px] text-center text-[17px] font-medium text-white/75">
                 FVL
               </div>
@@ -77,7 +73,6 @@ export default function CameraControlPanel() {
             <div className="absolute right-[3px] top-[20px] h-[18px] w-[3px] -rotate-[10deg] rounded-full bg-[#4fbd6a]" />
             <span className="absolute left-[10px] top-[7px] size-[6px] rounded-full bg-[#d9d9d9]" />
             <span className="absolute right-[10px] top-[7px] size-[6px] rounded-full bg-[#d9d9d9]" />
-
             <div className="absolute bottom-0 left-1/2 h-[19px] w-[25px] -translate-x-1/2 rounded-t-full bg-[#bdbdbd]">
               <div className="absolute left-1/2 top-[-5px] size-[11px] -translate-x-1/2 rounded-full bg-[#bdbdbd]" />
             </div>
@@ -89,28 +84,17 @@ export default function CameraControlPanel() {
 
           <div className="absolute right-[31px] top-[14px] z-20 w-[104px] text-white/55">
             <div className="flex items-end justify-between">
-              <span className="text-[18px] font-light tracking-[-1px]">
-                1/1.2k
-              </span>
+              <span className="text-[18px] font-light tracking-[-1px]">1/1.2k</span>
               <span className="text-[18px] font-light">0.0</span>
             </div>
-
             <div className="mt-px h-px bg-white/20" />
-
             <div className="mt-[2px] flex justify-between text-[12px]">
               <span>SS</span>
               <span>EV</span>
             </div>
-
-            <div className="mt-[12px] text-right text-[18px] font-light">
-              2.4K
-            </div>
-
+            <div className="mt-[12px] text-right text-[18px] font-light">2.4K</div>
             <div className="mt-[2px] h-px bg-white/20" />
-
-            <div className="mt-[2px] text-right text-[12px]">
-              ISO
-            </div>
+            <div className="mt-[2px] text-right text-[12px]">ISO</div>
           </div>
 
           <div className="absolute left-[34px] top-[137px] z-20 size-[70px] overflow-hidden rounded-[10px] border-[4px] border-black bg-black">
@@ -125,12 +109,8 @@ export default function CameraControlPanel() {
             <span className="text-[24px] font-medium tracking-[-1px] text-[#ff4b32]">
               SK
             </span>
-
             <div className="ml-auto">
-              <ShutterButton
-                recording={recording}
-                onClick={toggleRecording}
-              />
+              <ShutterButton recording={recording} onClick={toggleRecording} />
             </div>
           </div>
 
@@ -149,11 +129,36 @@ export default function CameraControlPanel() {
           <div className="absolute left-[453px] top-[165px] h-px w-[26px] bg-black/35" />
 
           <div className="absolute right-[20px] bottom-[52px] z-20">
-            <AELockButton
-              active={aeLocked}
-              onClick={toggleAeLock}
-            />
+            <AELockButton active={aeLocked} onClick={toggleAeLock} />
           </div>
+
+          <div className="absolute left-[34px] top-[82px] z-20 flex items-center gap-[5px]">
+            <span className="size-[4px] rounded-full bg-[#f04a32] shadow-[0_0_7px_rgba(240,74,50,0.45)]" />
+            <span className="text-[5px] font-medium tracking-[1.4px] text-black/35">
+              READY
+            </span>
+          </div>
+
+          <div className="absolute left-[36px] bottom-[18px] z-20 flex items-center gap-[7px] text-[4px] tracking-[1px] text-black/25">
+            <span>01</span>
+            <span className="h-px w-[12px] bg-black/20" />
+            <span>25</span>
+            <span className="h-px w-[18px] bg-black/20" />
+            <span>50</span>
+          </div>
+
+          <div className="absolute left-[226px] bottom-[17px] z-20 flex items-end gap-[4px] opacity-25">
+            {[3, 7, 12, 7, 3].map((height, index) => (
+              <span
+                key={index}
+                className="w-px bg-black"
+                style={{ height }}
+              />
+            ))}
+          </div>
+
+          <div className="absolute left-[18px] top-[83px] z-20 size-[5px] rounded-full border border-black/20 bg-[#b8b8b8] shadow-[inset_0_1px_1px_rgba(255,255,255,0.5)]" />
+          <div className="absolute right-[16px] top-[84px] z-20 size-[5px] rounded-full border border-white/10 bg-[#111] shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)]" />
 
           <div className="absolute bottom-[28px] right-[32px] z-20 flex items-center gap-[5px] text-[4px] uppercase tracking-[1px] text-white/18">
             <span>CAM</span>
