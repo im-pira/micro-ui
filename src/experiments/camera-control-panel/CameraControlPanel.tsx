@@ -160,29 +160,29 @@ export default function CameraControlPanel() {
         </div>
       </div>
       {previewOpen && (
-  <div
-    onClick={() => setPreviewOpen(false)}
-    className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-[10px] animate-[fadeIn_220ms_ease-out]"
-  >
-    <div
-      onClick={(e) => e.stopPropagation()}
-      className="relative overflow-hidden rounded-[18px] bg-black p-[5px] shadow-[0_24px_60px_rgba(0,0,0,0.35)] animate-[previewIn_260ms_cubic-bezier(.22,1,.36,1)]"
-    >
-      <img
-        src="/camera-control-panel/camera.png"
-        alt="Camera preview"
-        className="h-[320px] w-[360px] rounded-[14px] object-cover"
-      />
+        <div
+          onClick={() => setPreviewOpen(false)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/20 backdrop-blur-[10px] animate-[fadeIn_220ms_ease-out]"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative overflow-hidden rounded-[18px] bg-black p-[5px] shadow-[0_24px_60px_rgba(0,0,0,0.35)] animate-[previewIn_260ms_cubic-bezier(.22,1,.36,1)]"
+          >
+            <img
+              src="/camera-control-panel/camera.png"
+              alt="Camera preview"
+              className="h-[320px] w-[360px] rounded-[14px] object-cover"
+            />
 
-      <button
-        onClick={() => setPreviewOpen(false)}
-        className="absolute right-[10px] top-[10px] flex size-[26px] items-center justify-center rounded-full bg-black/50 text-[14px] text-white/80 backdrop-blur-md"
-      >
-        ×
-      </button>
-    </div>
+            <button
+              onClick={() => setPreviewOpen(false)}
+              className="absolute right-[10px] top-[10px] flex size-[26px] items-center justify-center rounded-full bg-black/50 text-[14px] text-white/80 backdrop-blur-md"
+            >
+              ×
+            </button>
+          </div>
 
-    <style>{`
+          <style>{`
       @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
@@ -199,8 +199,8 @@ export default function CameraControlPanel() {
         }
       }
     `}</style>
-  </div>
-)}
+        </div>
+      )}
     </main>
   );
 }
