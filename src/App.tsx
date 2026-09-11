@@ -16,6 +16,7 @@ import Shapes from "./experiments/shapes/Shapes";
 import GradientFramework from "./experiments/gradient-framework/GradientFramework";
 import ASCIILab from "./experiments/ascii-lab/ASCIILab";
 import CameraControlPanel from "./experiments/camera-control-panel/CameraControlPanel";
+import CameraLens from "./experiments/camera-lens/CameraLens";
 
 function App() {
   return (
@@ -85,6 +86,10 @@ function App() {
         <Route
           path="/experiments/camera-control-panel"
           element={<CameraControlPanel />}
+        />
+        <Route
+          path="/experiments/camera-lens"
+          element={<CameraLens />}
         />
       </Routes>
     </BrowserRouter>
