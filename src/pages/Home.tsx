@@ -18,6 +18,7 @@ const experiments = [
   ["15", "ASCII lab", "/experiments/ascii-lab"],
   ["16", "Camera control panel", "/experiments/camera-control-panel"],
   ["17", "Camera lens", "/experiments/camera-lens"],
+  ["18", "Feature card", "/experiments/feature-card"],
 ];
 
 export default function Home() {
