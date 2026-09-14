@@ -18,6 +18,7 @@ import ASCIILab from "./experiments/ascii-lab/ASCIILab";
 import CameraControlPanel from "./experiments/camera-control-panel/CameraControlPanel";
 import CameraLens from "./experiments/camera-lens/CameraLens";
 import FeatureCard from "./experiments/feature-card/FeatureCard";
+import DeleteButton from "./experiments/delete-button/DeleteButton";
 
 function App() {
   return (
@@ -95,6 +96,10 @@ function App() {
         <Route
           path="/experiments/feature-card"
           element={<FeatureCard />}
+        />
+        <Route
+          path="/experiments/delete-button"
+          element={<DeleteButton />}
         />
       </Routes>
     </BrowserRouter>
