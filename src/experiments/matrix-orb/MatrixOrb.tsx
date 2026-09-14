@@ -169,7 +169,7 @@ export default function MatrixOrb() {
                         {Array.from({ length: 6 }).map((_, i) => (
                             <span
                                 key={i}
-                                className="size-[3px] rounded-full bg-white/25 shadow-[inset_0_1px_0_rgba(255,255,255,0.45),0_0_4px_rgba(255,255,255,0.08)]"
+                                className="size-[3px] rounded-full bg-white/25 shadoww-[inset_0_1px_0_rgba(255,255,255,0.45),0_0_4px_rgba(255,255,255,0.08)]"
                             />
                         ))}
                     </div>
