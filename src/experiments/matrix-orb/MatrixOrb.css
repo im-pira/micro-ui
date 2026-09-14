@@ -4,7 +4,10 @@
   box-shadow: 0 0 7px rgba(167, 139, 250, .5);
 }
 
-.active { animation: activePulse 1.8s ease-in-out infinite; }
+.active .dot {
+  animation: activeWave 2.4s ease-in-out infinite;
+  animation-delay: calc(var(--distance) * 70ms);
+}
 
 .thinking .dot {
   animation: thinking 1.8s ease-in-out infinite;
@@ -29,8 +32,9 @@
   animation-delay: calc(var(--index) * 14ms);
 }
 
-@keyframes activePulse {
-  50% { transform: scale(1.035); }
+@keyframes activeWave {
+  0%, 100% { transform: translateY(0); opacity: .8; }
+  50% { transform: translateY(-3px); opacity: 1; }
 }
 
 @keyframes thinking {
@@ -53,4 +57,9 @@
 @keyframes connecting {
   0%, 20%, 100% { opacity: .12; }
   45%, 70% { opacity: 1; }
+}
+button,
+input,
+label {
+  outline: none;
 }

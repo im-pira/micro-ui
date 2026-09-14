@@ -118,7 +118,7 @@ export default function MatrixOrb() {
                     onPointerDown={onPointerDown}
                     onPointerMove={onPointerMove}
                     style={{ transform: `translate(${pos.x}px, ${pos.y}px)` }}
-                    className="flex touch-none select-none items-center rounded-[22px] border border-white/[0.08] bg-gradient-to-b from-[#191919] to-[#131313] p-1 shadow-[0_14px_40px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.04)]"
+                    className="flex touch-none select-none items-center rounded-xl border border-white/[0.08] bg-gradient-to-b from-[#191919] to-[#131313] p-1 shadow-[0_14px_40px_rgba(0,0,0,0.35),inset_0_1px_0_rgba(255,255,255,0.04)]"
                 >
                     {/* Grip */}
                     <div className="grid cursor-grab grid-cols-2 gap-[3px] px-2.5 active:cursor-grabbing">
@@ -133,7 +133,7 @@ export default function MatrixOrb() {
                     {/* States */}
                     <div className="relative flex">
                         <div
-                            className="absolute inset-y-0 rounded-xl border border-white/[0.08] bg-white/[0.07] shadow-[inset_0_1px_0_rgba(255,255,255,0.08)] transition-all duration-300 ease-out"
+                            className="absolute inset-y-[2px] rounded-lg border border-white/15 bg-gradient-to-b from-white/[0.07] to-white/[0.025] shadow-[inset_0_1px_0_rgba(255,255,255,0.1)] transition-all duration-300 ease-out"
                             style={{
                                 left: selector.left,
                                 width: selector.width,
@@ -149,7 +149,7 @@ export default function MatrixOrb() {
                                 onPointerDown={(e) => e.stopPropagation()}
                                 onClick={() => setState(item)}
                                 className={`relative z-10 rounded-xl px-3 py-2 text-xs capitalize transition-colors duration-300 ${state === item
-                                        ? "text-white"
+                                        ? "text-white/90"
                                         : "text-white/35 hover:text-white/60"
                                     }`}
                             >
