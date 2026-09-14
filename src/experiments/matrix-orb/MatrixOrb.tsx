@@ -1,4 +1,5 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import "./MatrixOrb.css";
 
 const states = [
     "idle",
@@ -14,6 +15,19 @@ type OrbState = (typeof states)[number];
 export default function MatrixOrb() {
     const [state, setState] = useState<OrbState>("idle");
     const [pos, setPos] = useState({ x: 0, y: 0 });
+    const buttonRefs = useRef<(HTMLButtonElement | null)[]>([]);
+    const [selector, setSelector] = useState({ left: 0, width: 0 });
+
+    useEffect(() => {
+        const button = buttonRefs.current[states.indexOf(state)];
+
+        if (button) {
+            setSelector({
+                left: button.offsetLeft,
+                width: button.offsetWidth,
+            });
+        }
+    }, [state]);
 
     const drag = useRef({
         x: 0,
@@ -107,108 +121,32 @@ export default function MatrixOrb() {
                         ))}
                     </div>
 
-                    {states.map((item) => (
-                        <button
-                            key={item}
-                            onPointerDown={(e) => e.stopPropagation()}
-                            onClick={() => setState(item)}
-                            className={`rounded-xl px-3 py-2 text-xs capitalize transition ${state === item
-                                    ? "bg-black text-white"
-                                    : "text-white/40 hover:text-white/70"
-                                }`}
-                        >
-                            {item}
-                        </button>
-                    ))}
+                    <div className="relative flex">
+                        <div
+                            className="absolute inset-y-0 rounded-xl bg-white/10 transition-all duration-300 ease-out"
+                            style={{
+                                left: selector.left,
+                                width: selector.width,
+                            }}
+                        />
+
+                        {states.map((item, i) => (
+                            <button
+                                key={item}
+                                ref={(el) => {
+                                    buttonRefs.current[i] = el;
+                                }}
+                                onPointerDown={(e) => e.stopPropagation()}
+                                onClick={() => setState(item)}
+                                className={`relative z-10 rounded-xl px-3 py-2 text-xs capitalize transition-colors duration-300 ${state === item ? "text-white" : "text-white/40 hover:text-white/70"
+                                    }`}
+                            >
+                                {item}
+                            </button>
+                        ))}
+                    </div>
                 </div>
             </div>
-
-            <style>{`
-        .dot {
-          opacity: .85;
-        }
-
-        /* static glow */
-        .idle .dot {
-          box-shadow: 0 0 7px rgba(167, 139, 250, .5);
-        }
-
-        /* orb boing */
-        .active {
-          animation: boing 1.4s ease-in-out infinite;
-        }
-
-        /* dots disappear + return */
-        .thinking .dot {
-          animation: thinking 1.8s ease-in-out infinite;
-          animation-delay: calc(var(--distance) * 90ms);
-        }
-
-        /* only outer dots act like loading dial */
-        .searching .dot {
-          opacity: .2;
-        }
-
-        .searching .outer-dot {
-          animation: searching 1.4s linear infinite;
-          animation-delay: calc(var(--angle) * -1.4s);
-        }
-
-        /* heartbeat */
-        .listening .dot {
-          animation: heartbeat 1.5s ease-in-out infinite;
-          animation-delay: calc(var(--distance) * 45ms);
-        }
-
-        /* dots illuminate one after another */
-        .connecting .dot {
-          opacity: .15;
-          animation: connecting 2s ease-in-out infinite;
-          animation-delay: calc(var(--index) * 14ms);
-        }
-
-        @keyframes boing {
-          0%, 100% { transform: scale(1); }
-          45% { transform: scale(1.08, .94); }
-          65% { transform: scale(.97, 1.04); }
-        }
-
-        @keyframes thinking {
-          0%, 100% {
-            opacity: .9;
-            transform: scale(1);
-          }
-          50% {
-            opacity: .05;
-            transform: scale(.35);
-          }
-        }
-
-        @keyframes searching {
-          0%, 75%, 100% {
-            opacity: .15;
-            transform: scale(1);
-          }
-          15% {
-            opacity: 1;
-            transform: scale(1.35);
-          }
-        }
-
-        @keyframes heartbeat {
-          0%, 100% { opacity: .25; }
-          25% { opacity: 1; }
-          38% { opacity: .35; }
-          52% { opacity: .9; }
-          70% { opacity: .25; }
-        }
-
-        @keyframes connecting {
-          0%, 20% { opacity: .12; }
-          45%, 70% { opacity: 1; }
-          100% { opacity: .12; }
-        }
-      `}</style>
         </div>
     );
 }

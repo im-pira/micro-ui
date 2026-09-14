@@ -1,0 +1,56 @@
+.dot { opacity: .85; }
+
+.idle .dot {
+  box-shadow: 0 0 7px rgba(167, 139, 250, .5);
+}
+
+.active { animation: activePulse 1.8s ease-in-out infinite; }
+
+.thinking .dot {
+  animation: thinking 1.8s ease-in-out infinite;
+  animation-delay: calc(var(--distance) * 90ms);
+}
+
+.searching .dot { opacity: .2; }
+
+.searching .outer-dot {
+  animation: searching 1.4s linear infinite;
+  animation-delay: calc(var(--angle) * -1.4s);
+}
+
+.listening .dot {
+  animation: listeningPulse 2.8s ease-in-out infinite;
+  animation-delay: calc(var(--distance) * 70ms);
+}
+
+.connecting .dot {
+  opacity: .15;
+  animation: connecting 2s ease-in-out infinite;
+  animation-delay: calc(var(--index) * 14ms);
+}
+
+@keyframes activePulse {
+  50% { transform: scale(1.035); }
+}
+
+@keyframes thinking {
+  50% {
+    opacity: .05;
+    transform: scale(.35);
+  }
+}
+
+@keyframes searching {
+  0%, 75%, 100% { opacity: .15; transform: scale(1); }
+  15% { opacity: 1; transform: scale(1.35); }
+}
+
+@keyframes listeningPulse {
+  0%, 100% { opacity: .35; transform: scale(.96); }
+  50% { opacity: 1; transform: scale(1.04); }
+}
+
+@keyframes connecting {
+  0%, 20%, 100% { opacity: .12; }
+  45%, 70% { opacity: 1; }
+}
