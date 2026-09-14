@@ -19,7 +19,8 @@ const experiments = [
   ["16", "Camera control panel", "/experiments/camera-control-panel"],
   ["17", "Camera lens", "/experiments/camera-lens"],
   ["18", "Feature card", "/experiments/feature-card"],
-  ["18", "Delete button", "/experiments/delete-button"],
+  ["19", "Delete button", "/experiments/delete-button"],
+  ["20", "Matrix Orb", "/experiments/matrix-orb"],
 ];
 
 export default function Home() {

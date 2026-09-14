@@ -19,6 +19,7 @@ import CameraControlPanel from "./experiments/camera-control-panel/CameraControl
 import CameraLens from "./experiments/camera-lens/CameraLens";
 import FeatureCard from "./experiments/feature-card/FeatureCard";
 import DeleteButton from "./experiments/delete-button/DeleteButton";
+import MatrixOrb from "./experiments/matrix-orb/MatrixOrb";
 
 function App() {
   return (
@@ -100,6 +101,10 @@ function App() {
         <Route
           path="/experiments/delete-button"
           element={<DeleteButton />}
+        />
+        <Route
+          path="/experiments/matrix-orb"
+          element={<MatrixOrb />}
         />
       </Routes>
     </BrowserRouter>
