@@ -20,6 +20,7 @@ import CameraLens from "./experiments/camera-lens/CameraLens";
 import FeatureCard from "./experiments/feature-card/FeatureCard";
 import DeleteButton from "./experiments/delete-button/DeleteButton";
 import MatrixOrb from "./experiments/matrix-orb/MatrixOrb";
+import SidebarPanel from "./experiments/sidebar-panel/SidebarPanel";
 
 function App() {
   return (
@@ -105,6 +106,10 @@ function App() {
         <Route
           path="/experiments/matrix-orb"
           element={<MatrixOrb />}
+        />
+        <Route
+          path="/experiments/sidebar-panel"
+          element={<SidebarPanel />}
         />
       </Routes>
     </BrowserRouter>
